@@ -6,37 +6,36 @@
 
 using namespace std;
 
-int linearSearch(string element, vector<string> dataset)
-{
-    for(int i = 0; i < 26*26*26*26*26; i++)
+int linearSearch(string element, vector<string> dataSet){
+    for(int i = 0; i < dataSet.size(); i++)
     {
-        if((dataset[i])==(element)){
+        if((dataSet[i])==(element)){
             return i;
         }
     }
     return -1;
 }
-int binarySearch(string element, vector<string> dataset)
-{
-    int bindex = dataset.size()/2;
-    int min = 0;
-    int max = dataset.size()-1;
 
-    while(min<=max)
-    {
-        if(dataset[bindex].compare(element)==0)
+int binarySearch(string element, vector<string> dataset){
+    int minIndex = 0;
+    int maxIndex = dataset.size()-1;
+    int mid = 0;
+
+    while (minIndex <= maxIndex){
+        mid = dataset.size()/2;
+        if(dataset[mid].compare(element)==0)
         {
-            return bindex;
+            return mid;
         }
-        else if(dataset[bindex].compare(element)<0)
+        else if(dataset[mid].compare(element)<0)
         {
-            min = bindex+1;
+            minIndex = mid + 1;
         }
         else
         {
-            max = bindex-1;
+            maxIndex = mid - 1;
         }
-        bindex = (max+min)/2;
+
     }
     return -1;
 }
@@ -49,48 +48,48 @@ int main() {
 
     string element = "";
 
-    auto timeBefore = 0;
-    auto timeAfter = 0;
+    auto start = 0;
+    auto end = 0;
     int outdex = 0;
     string printOut = "";
 
     element = "not_here";
-    timeBefore = systemTimeNanoseconds();
+    start = systemTimeNanoseconds();
     outdex = linearSearch(element, dataset);
-    timeAfter = systemTimeNanoseconds();
-    printOut = "Linear Search: " + to_string(outdex) + " Time: " + to_string(timeAfter-timeBefore-326);
+    end = systemTimeNanoseconds();
+    printOut = "Linear Search: " + to_string(outdex) + " Time: " + to_string(end-start-326);
     cout << printOut << "\n";
 
-    timeBefore = systemTimeNanoseconds();
+    start = systemTimeNanoseconds();
     outdex = binarySearch(element, dataset);
-    timeAfter = systemTimeNanoseconds();
-    printOut = "Binary Search: " + to_string(outdex) + " Time: " + to_string(timeAfter-timeBefore-326);
+    end = systemTimeNanoseconds();
+    printOut = "Binary Search: " + to_string(outdex) + " Time: " + to_string(end-start-326);
     cout << printOut<<"\n";
 
     element = "aaaaa";
-    timeBefore = systemTimeNanoseconds();
+    start = systemTimeNanoseconds();
     outdex = linearSearch(element, dataset);
-    timeAfter = systemTimeNanoseconds();
-    printOut = "Linear Search: " + to_string(outdex) + " Time: " + to_string(timeAfter-timeBefore-326);
+    end = systemTimeNanoseconds();
+    printOut = "Linear Search: " + to_string(outdex) + " Time: " + to_string(end-start-326);
     cout << printOut<<"\n";
 
-    timeBefore = systemTimeNanoseconds();
+    start = systemTimeNanoseconds();
     outdex = binarySearch(element, dataset);
-    timeAfter = systemTimeNanoseconds();
-    printOut = "Binary Search: " + to_string(outdex) + " Time: " + to_string(timeAfter-timeBefore-326);
+    end = systemTimeNanoseconds();
+    printOut = "Binary Search: " + to_string(outdex) + " Time: " + to_string(end-start-326);
     cout << printOut<<"\n";
 
     element = "mzzzz";
-    timeBefore = systemTimeNanoseconds();
+    start = systemTimeNanoseconds();
     outdex = linearSearch(element, dataset);
-    timeAfter = systemTimeNanoseconds();
-    printOut = "Linear Search: " + to_string(outdex) + " Time: " + to_string(timeAfter-timeBefore-326);
+    end = systemTimeNanoseconds();
+    printOut = "Linear Search: " + to_string(outdex) + " Time: " + to_string(end-start-326);
     cout << printOut<<"\n";
 
-    timeBefore = systemTimeNanoseconds();
+    start = systemTimeNanoseconds();
     outdex = binarySearch(element, dataset);
-    timeAfter = systemTimeNanoseconds();
-    printOut = "Binary Search: " + to_string(outdex) + " Time: " + to_string(timeAfter-timeBefore-326);
+    end = systemTimeNanoseconds();
+    printOut = "Binary Search: " + to_string(outdex) + " Time: " + to_string(end-start-326);
     cout << printOut<<"\n";
 
 
